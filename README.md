@@ -43,3 +43,12 @@ O back-end será responsável pela lógica de agendamento e armazenamento de dad
 - Criação de um diagrama ER para os CRUDs principais, definindo as tabelas, relacionamentos e tipos de dados.
 
 ---
+
+## Diagrama ER (Entidade-Relacionamento)
+
+Abaixo está o diagrama ER para os dois CRUDs principais (Clientes e Agendamentos), detalhando as tabelas, relacionamentos e tipos de dados.
+
+![Diagrama ER do Projeto](assets/DiagramaEr,drawio.png)
+
+---
+
