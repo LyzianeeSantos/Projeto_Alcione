@@ -1,0 +1,139 @@
+/* avaliacoes.css */
+
+/* Barra de navegação */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+nav {
+    background-color: #c07272;
+    color: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border-radius: 5px;
+}
+
+nav a:hover {
+    background-color: #fff;
+    transform: scale(1.1);
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    font-size: 1.1em;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover, nav ul li a.active {
+    color: #f5e1e1;
+}
+
+/* Banner */
+.banner img {
+    width: 100%;
+    max-height: 500px;
+    object-fit: none;
+}
+
+
+/* Seção de Avaliações */
+.avaliacoes-section {
+    max-width: 800px;
+    margin: 30px auto;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+.avaliacoes-section h1 {
+    font-size: 2em;
+    color: #c07272;
+    margin-bottom: 10px;
+}
+
+.avaliacao {
+    margin: 20px 0;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f5f5f5;
+    text-align: left;
+}
+
+.avaliacao h3 {
+    color: #c07272;
+    font-size: 1.2em;
+}
+
+.estrelas i {
+    color: #ffbb33;
+}
+
+.nova-avaliacao {
+    margin-top: 30px;
+    text-align: left;
+}
+
+.nova-avaliacao h2 {
+    color: #c07272;
+    font-size: 1.8em;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+input, select, textarea, button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+button {
+    background-color: #c07272;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #a85454;
+}

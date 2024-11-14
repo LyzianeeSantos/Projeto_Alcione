@@ -4,93 +4,49 @@
 require_once __DIR__ . '/../models/Agendamento.php';
 
 class AgendamentosController {
-    
+
     // Listar todos os agendamentos
     public function index() {
-        $agendamentos = Agendamento::all();
-        echo json_encode($agendamentos);
+        try {
+            $agendamentos = Agendamento::all();
+            echo json_encode($agendamentos);
+        } catch (Exception $e) {
+            http_response_code(500);
+            echo json_encode(['error' => 'Erro ao listar agendamentos', 'details' => $e->getMessage()]);
+        }
     }
 
     // Criar um novo agendamento
     public function store() {
         $data = json_decode(file_get_contents("php://input"), true);
 
-        // Validação de dados
+        // Validação de dados recebidos
         if (empty($data['id_cliente']) || empty($data['data']) || empty($data['hora']) || empty($data['servico'])) {
             http_response_code(400);
-            echo json_encode(['error' => 'ID do cliente, data, hora e serviço são obrigatórios']);
+            echo json_encode(['error' => 'Campos obrigatórios ausentes']);
             return;
         }
 
-        $agendamento = new Agendamento();
-        $agendamento->id_cliente = $data['id_cliente'];
-        $agendamento->data = $data['data'];
-        $agendamento->hora = $data['hora'];
-        $agendamento->servico = $data['servico'];
-        $agendamento->duracao = $data['duracao'] ?? null;
-
-        if ($agendamento->save()) {
-            http_response_code(201);
-            echo json_encode(['message' => 'Agendamento criado com sucesso']);
-        } else {
-            http_response_code(500);
-            echo json_encode(['error' => 'Erro ao criar agendamento']);
-        }
-    }
-
-    // Atualizar um agendamento existente
-    public function update() {
-        $data = json_decode(file_get_contents("php://input"), true);
-
-        if (empty($data['id_agendamento']) || empty($data['id_cliente']) || empty($data['data']) || empty($data['hora']) || empty($data['servico'])) {
+        // Validação adicional (formato de data/hora, etc.)
+        if (!strtotime($data['data']) || !preg_match('/^\d{2}:\d{2}$/', $data['hora'])) {
             http_response_code(400);
-            echo json_encode(['error' => 'ID do agendamento, ID do cliente, data, hora e serviço são obrigatórios']);
+            echo json_encode(['error' => 'Formato de data ou hora inválido']);
             return;
         }
 
-        $agendamento = Agendamento::find($data['id_agendamento']);
-        if (!$agendamento) {
-            http_response_code(404);
-            echo json_encode(['error' => 'Agendamento não encontrado']);
-            return;
-        }
+        try {
+            $agendamento = new Agendamento();
+            $agendamento->id_cliente = $data['id_cliente'];
+            $agendamento->data = $data['data'];
+            $agendamento->hora = $data['hora'];
+            $agendamento->servico = $data['servico'];
+            $agendamento->duracao = $data['duracao'] ?? null;
 
-        $agendamento->id_cliente = $data['id_cliente'];
-        $agendamento->data = $data['data'];
-        $agendamento->hora = $data['hora'];
-        $agendamento->servico = $data['servico'];
-        $agendamento->duracao = $data['duracao'] ?? null;
-
-        if ($agendamento->save()) {
-            echo json_encode(['message' => 'Agendamento atualizado com sucesso']);
-        } else {
+            $result = $agendamento->save();
+            echo json_encode(['success' => 'Agendamento criado com sucesso', 'id' => $result]);
+        } catch (Exception $e) {
             http_response_code(500);
-            echo json_encode(['error' => 'Erro ao atualizar agendamento']);
-        }
-    }
-
-    // Excluir um agendamento
-    public function delete() {
-        $data = json_decode(file_get_contents("php://input"), true);
-
-        if (empty($data['id_agendamento'])) {
-            http_response_code(400);
-            echo json_encode(['error' => 'ID do agendamento é obrigatório']);
-            return;
-        }
-
-        $agendamento = Agendamento::find($data['id_agendamento']);
-        if (!$agendamento) {
-            http_response_code(404);
-            echo json_encode(['error' => 'Agendamento não encontrado']);
-            return;
-        }
-
-        if ($agendamento->delete()) {
-            echo json_encode(['message' => 'Agendamento excluído com sucesso']);
-        } else {
-            http_response_code(500);
-            echo json_encode(['error' => 'Erro ao excluir agendamento']);
+            echo json_encode(['error' => 'Erro ao criar agendamento', 'details' => $e->getMessage()]);
         }
     }
 }

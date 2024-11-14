@@ -3,29 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Serviços - Alcione</title>
-    <link rel="stylesheet" href="/public/css/style.css">
+    <title>Serviços - Alcione Depiladora</title>
+    <link rel="stylesheet" href="/public/css/servicos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="index.html">Início</a>
-            <a href="servicos.html">Serviços</a>
-            <a href="tabela_precos.html">Tabela de Preços</a>
-            <a href="avaliacoes.html">Avaliações</a>
-            <a href="agendamentos.html">Agendamento</a>
-        </nav>
-    </header>
-    <main>
-        <h1>Serviços Oferecidos</h1>
+
+    <!-- Barra de navegação -->
+    <nav>
         <ul>
-            <li>Depilação</li>
-            <li>Cone Hindu</li>
-            <li>Auriculoterapia</li>
-            <li>Acupuntura</li>
-            <li>Medicina Chinesa</li>
-            <li>Aromaterapia</li>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="servicos.html" class="active">Serviços</a></li>
+            <li><a href="tabela_precos.html">Tabela de Preços</a></li>
+            <li><a href="agendamentos.html">Agendamento</a></li>
+            <li><a href="avaliacoes.html">Avaliações</a></li>
         </ul>
-    </main>
+    </nav>
+
+    <!-- Banner da página -->
+    <div class="banner">
+        <img src="/public/img/Logotipo_alcione.png" alt="Alcione Depiladora">
+    </div>
+
+    <!-- Seção de Serviços -->
+    <section class="servicos-section">
+        <h1>Nossos Serviços</h1>
+        <p>Conheça os benefícios dos nossos serviços especializados.</p>
+
+        <!-- Serviço: Depilação -->
+        <div class="servico">
+            <img src="/public/img/depilacao.jpg" alt="Serviço de Depilação">
+            <div class="servico-texto">
+                <h2>Depilação</h2>
+                <p>A depilação remove os pelos pela raiz, proporcionando uma pele lisa e livre de pelos por um longo período. Este processo é ideal para pessoas que desejam uma pele macia e saudável, sem a necessidade de raspar frequentemente. Além disso, a depilação ajuda a diminuir a densidade dos pelos ao longo do tempo, tornando-os mais finos e fáceis de remover nas sessões seguintes.</p>
+            </div>
+        </div>
+
+        <!-- Serviço: Acupuntura -->
+        <div class="servico">
+            <img src="/public/img/acupuntura.jpg" alt="Serviço de Acupuntura">
+            <div class="servico-texto">
+                <h2>Acupuntura</h2>
+                <p>A acupuntura é uma prática da medicina tradicional chinesa que utiliza a inserção de agulhas finas em pontos específicos do corpo para aliviar dores e promover o bem-estar geral. Esta técnica é conhecida por ajudar a reduzir o estresse, melhorar a circulação sanguínea e fortalecer o sistema imunológico. É ideal para quem busca alívio de dores crônicas e uma abordagem natural para melhorar a saúde.</p>
+            </div>
+        </div>
+
+        <!-- Serviço: Cone Hindu -->
+        <div class="servico">
+            <img src="/public/img/cone_hindu.jpg" alt="Serviço de Cone Hindu">
+            <div class="servico-texto">
+                <h2>Cone Hindu</h2>
+                <p>O Cone Hindu é uma terapia natural que utiliza um cone de cera para remover impurezas do ouvido e aliviar o estresse. Este método é conhecido por trazer uma sensação de relaxamento profundo e melhorar a clareza mental. É um tratamento indicado para quem sofre de dores de cabeça, insônia e outros desconfortos relacionados ao ouvido e ao estresse.</p>
+            </div>
+        </div>
+    </section>
+
+    <script src="/public/js/servicos.js"></script>
 </body>
 </html>
